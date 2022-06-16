@@ -1,68 +1,33 @@
-# Class: knockd::sequence
 #
-# A class for managing knockd configuration.
+# @summary
+#   A define for managing knockd sequences
 #
-# Parameters:
-# sequence:
+# @param sequence
 #   port sequence used in single knock mode.
 #
-# open_sequence:
+# @param open_sequence
 #   port sequence used in the open knock (two knock mode).
 #
-# close_sequence:
+# @param close_sequence
 #   port sequence used in the close knock (two knock mode).
 #
-# one_time_sequences:
+# @param one_time_sequences
 #   file containing the one time sequences to be used. (instead of using a fixed sequence).
 #
-# seq_timeout:
+# @param seq_timeout
 #   port sequence timeout.
 #
-# tcpflags:
+# @param tcpflags
 #   only pay attention to packets that have this flag set.
 #
-# start_command:
+# @param start_command
 #   command executed when a client makes a correct port knock (both modes).
 #
-# stop_command:
+# @param stop_command
 #   command executed when cmd_timeout seconds are passed or when a close sequence was received (both modes).
 #
-# cmd_timeout:
+# @param cmd_timeout
 #   time to wait between start and stop command (only required in two knock mode).
-#
-# Examples:
-#
-# An Open/Close example that uses a single knock to control access to port 22(ssh):
-#
-# class { "knockd":
-# 	interface => 'eth3',
-# }
-# knockd::sequence {
-# 	"SSH":
-# 		sequence      => '2222:udp,3333:tcp,4444:udp',
-# 		seq_timeout   => '15',
-# 		tcpflags      => 'syn,ack',
-# 		start_command => '/usr/sbin/iptables -A INPUT -s %IP% -p tcp --syn --dport 22 -j ACCEPT',
-# 		cmd_timeout   => '10',
-# 		stop_command  => '/usr/sbin/iptables -D INPUT -s %IP% -p tcp --syn --dport 22 -j ACCEPT',
-# }
-#
-# An example using two knocks: the first allow access to port 22(ssh), the second will close the port:
-#
-# class { "knockd":
-# 	interface => 'eth0',
-# }
-# knockd::sequence {
-# 	"SSH":
-# 		open_sequence      => '7000,8000,9000',
-# 		close_sequence     => '9000,8000,7000',
-# 		seq_timeout        => '10',
-# 		tcpflags           => 'syn',
-# 		start_command      => '/usr/sbin/iptables -A INPUT -s %IP% -p tcp --syn --dport 22 -j ACCEPT',
-# 		stop_command       => '/usr/sbin/iptables -D INPUT -s %IP% -p tcp --syn --dport 22 -j ACCEPT',
-# }
-#
-# Copyright 2015 Alessio Cassibba (X-Drum), unless otherwise noted.
 #
 define knockd::sequence (
   $sequence = $knockd::params::sequence,

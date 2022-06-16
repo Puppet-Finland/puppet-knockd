@@ -1,8 +1,6 @@
-# == Class: knockd::params
 #
-# A class for managing knockd configuration.
-#
-# Copyright 2015 Alessio Cassibba (X-Drum), unless otherwise noted.
+# @summary
+#   A class for managing knockd configuration.
 #
 class knockd::params {
   $service_name = 'knockd'

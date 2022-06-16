@@ -1,33 +1,26 @@
-# Class: knockd::init
+# @summary
+#   A class for managing knockd configuration.
 #
-# A class for managing knockd configuration.
-#
-# Parameters:
-# package_name:
+# @param package_name
 #   package name.
 #
-# service_name:
+# @param service_name
 #   service name (initscript name).
 #
-# usesyslog:
+# @param config_file
+#   location of the knockd configuration file.
+#
+# @param usesyslog
 #   log action messages through syslog().
 #
-# logfile:
+# @param logfile
 #   log actions directly to a file, (defaults to: /var/log/knockd.log).
 #
-# pidfile:
+# @param pidfile
 #   pidfile to use when in daemon mode, (defaults to: /var/run/knockd.pid).
 #
-# interface:
+# @param interface
 #   network interface to listen on (mandatory).
-#
-# Examples:
-#
-# class { "knockd":
-# 	interface => 'eth0',
-# }
-#
-# Copyright 2015 Alessio Cassibba (X-Drum), unless otherwise noted.
 #
 class knockd (
   $package_name = $knockd::params::package_name,
