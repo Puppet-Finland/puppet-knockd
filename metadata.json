@@ -7,6 +7,67 @@
   "source": "git://github.com/x-drum/puppet-knockd",
   "project_page": "https://github.com/x-drum/puppet-knockd",
   "issues_url": "https://github.com/x-drum/puppet-knockd/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-concat",
+      "version_requirement": ">= 1.0.2"
+    },
+    {
+      "name": "puppetlabs-concat",
+      "version_requirement": ">= 1.0.2"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Scientific",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "10"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "18.04"
+      ]
+    },
+    {
+      "operatingsystem": "windows",
+      "operatingsystemrelease": [
+        "2019",
+        "10"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 6.21.0 < 8.0.0"
+    }
+  ],
   "description": "Configure and install knockd service.",
   "tags": [
     "ubuntu",
@@ -19,11 +80,7 @@
     "gentoo",
     "rhel"
   ],
-  "dependencies": [
-    {
-      "name": "puppetlabs-concat",
-      "version_requirement": ">= 1.0.2"
-    },
-    {"name":"puppetlabs-concat","version_requirement":">= 1.0.2"}
-  ]
+  "pdk-version": "2.5.0",
+  "template-url": "pdk-default#2.5.0",
+  "template-ref": "tags/2.5.0-0-g369d483"
 }
