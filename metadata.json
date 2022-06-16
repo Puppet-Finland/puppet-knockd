@@ -1,6 +1,6 @@
 {
   "name": "puppetfinland-knockd",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Puppet-Finland team",
   "summary": "Knockd Module",
   "license": "Apache-2.0",
@@ -39,7 +39,7 @@
     "knock",
     "portknocker",
     "portknocking",
-    "freebsd",
+    "freebsd"
   ],
   "pdk-version": "2.5.0",
   "template-url": "pdk-default#2.5.0",
