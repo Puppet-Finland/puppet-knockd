@@ -3,31 +3,7 @@ puppet-knockd
 
 This module manages knockd.
 
-## Class: knockd
-
-A class for managing knockd server options
-
-### Parameters
-
-[*package_name*]  
-  package name.
-
-[*service_name*]  
-  service name (initscript name).
-
-[*usesyslog*]  
-  log action messages through syslog().
-
-[*logfile*]  
-  log actions directly to a file, (defaults to: /var/log/knockd.log).
-
-[*pidfile*]  
-  pidfile to use when in daemon mode, (defaults to: /var/run/knockd.pid).
-
-[*interface*]:
-  network interface to listen on (mandatory).
-
-### Examples
+## Examples
 
 ```
  class { "knockd":
@@ -35,39 +11,6 @@ A class for managing knockd server options
  }
 ```
 
-## Define: knockd::sequence
-
-A defined type for managing knockd sequences
-
-### Parameters
-[*sequence*]  
-  port sequence used in single knock mode.
-
-[*open_sequence*]  
-  port sequence used in the open knock (two knock mode).
-
-[*close_sequence*]  
-  port sequence used in the close knock (two knock mode).
-
-[*one_time_sequences*]  
-  file containing the one time sequences to be used. (instead of using a fixed sequence).
-
-[*seq_timeout*]  
-  port sequence timeout.
-
-[*tcpflags*]  
-  only pay attention to packets that have this flag set.
-
-[*start_command*]  
-  command executed when a client makes a correct port knock (both modes).
-
-[*stop_command*]  
-  command executed when cmd_timeout seconds are passed or when a close sequence was received (both modes).
-
-[*cmd_timeout*]  
-  time to wait between start and stop command (only required in two knock mode).
-
-### Examples
 > An Open/Close example that uses a single knock to control access to port 22(ssh):
 ```
  class { "knockd":

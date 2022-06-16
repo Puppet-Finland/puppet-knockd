@@ -70,7 +70,7 @@ class knockd (
     enable     => true,
     hasstatus  => false,
     hasrestart => true,
-    subscribe  => File[$knockd::params::config_file],
-    require    => [Package[$knockd::params::package_name], File[$knockd::params::config_file]],
+    subscribe  => Concat[$knockd::params::config_file],
+    require    => [Package[$knockd::params::package_name], Concat[$knockd::params::config_file]],
   }
 }
