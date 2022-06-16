@@ -4,6 +4,9 @@
 # @param package_name
 #   package name.
 #
+# @param package_ensure
+#   status of the package
+#
 # @param service_name
 #   service name (initscript name).
 #
@@ -23,19 +26,16 @@
 #   network interface to listen on (mandatory).
 #
 class knockd (
-  $package_name = $knockd::params::package_name,
-  $service_name = $knockd::params::service_name,
-  $config_file = $knockd::params::config_file,
-  $usesyslog = $knockd::params::usesyslog,
-  $logfile = $knockd::params::logfile,
-  $pidfile = $knockd::params::pidfile,
-  $interface = $knockd::params::interface,
+  Enum['present','absent'] $package_ensure = $knockd::params::package_ensure,
+  String                   $package_name = $knockd::params::package_name,
+  String                   $service_name = $knockd::params::service_name,
+  Stdlib::Absolutepath     $config_file  = $knockd::params::config_file,
+  Boolean                  $usesyslog    = $knockd::params::usesyslog,
+  Stdlib::Absolutepath     $logfile      = $knockd::params::logfile,
+  Stdlib::Absolutepath     $pidfile      = $knockd::params::pidfile,
+  String                   $interface    = $knockd::params::interface,
 ) inherits knockd::params {
-  if interface == undef {
-    fail('Please specify a valid interface.')
-  }
-
-  if $facts['os']['family'] == Debian {
+  if $facts['os']['family'] == 'Debian' {
     file { '/etc/default/knockd':
       ensure  => file,
       owner   => $knockd::params::default_owner,

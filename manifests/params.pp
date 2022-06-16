@@ -3,6 +3,7 @@
 #   A class for managing knockd configuration.
 #
 class knockd::params {
+  $package_ensure = 'present'
   $service_name = 'knockd'
   $usesyslog = undef
   $logfile = '/var/log/knockd.log'
@@ -18,7 +19,7 @@ class knockd::params {
   $stop_command = undef
   $cmd_timeout = undef
 
-  case $::kernel {
+  case $facts['kernel'] {
     'FreeBSD': {
       $config_file = '/usr/local/etc/knockd.conf'
       $default_owner = 'root'
