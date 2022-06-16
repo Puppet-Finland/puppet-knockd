@@ -1,12 +1,12 @@
 {
-  "name": "xdrum-knockd",
-  "version": "0.0.4",
-  "author": "Alessio Cassibba (X-Drum)",
+  "name": "puppetfinland-knockd",
+  "version": "1.0.0",
+  "author": "Puppet-Finland team",
   "summary": "Knockd Module",
   "license": "Apache-2.0",
-  "source": "git://github.com/x-drum/puppet-knockd",
-  "project_page": "https://github.com/x-drum/puppet-knockd",
-  "issues_url": "https://github.com/x-drum/puppet-knockd/issues",
+  "source": "https://github.com/Puppet-Finland/puppet-knockd.git",
+  "project_page": "https://github.com/Puppet-Finland/puppet-knockd.git",
+  "issues_url": "https://github.com/Puppet-Finland/puppet-knockd/issues",
   "dependencies": [
     {
       "name": "puppetlabs-concat",
