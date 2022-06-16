@@ -40,8 +40,6 @@
     "portknocker",
     "portknocking",
     "freebsd",
-    "gentoo",
-    "rhel"
   ],
   "pdk-version": "2.5.0",
   "template-url": "pdk-default#2.5.0",
