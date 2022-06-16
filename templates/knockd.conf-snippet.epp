@@ -1,4 +1,5 @@
-<%- | String                         $start_command,
+<%- | String                         $section,
+      String                         $start_command,
       Optional[String]               $stop_command,
       String                         $sequence,
       Integer                        $seq_timeout,
@@ -6,14 +7,12 @@
       Optional[Stdlib::Absolutepath] $one_time_sequences,
       Optional[String]               $tcpflags,
 | -%>
-[<%= $title %>]
-
+[<%= $section %>]
 <% if $sequence { -%>
 sequence = <%= $sequence %>
 <% } else { -%>
-one_time_sequences = <%= @one_time_sequences %>
+one_time_sequences = <%= $one_time_sequences %>
 <% } -%>
-
 seq_timeout = <%= $seq_timeout %>
 start_command = <%= $start_command %>
 cmd_timeout = <%= $cmd_timeout %>
@@ -22,4 +21,4 @@ stop_command = <%= $stop_command %>
 <% } -%>
 <% if $tcpflags { -%>
 tcpflags = <%= $tcpflags %>
-<% }-%>
+<% } -%>

@@ -39,6 +39,7 @@ define knockd::sequence (
   include knockd::params
 
   $epp_params = {
+    'section'            => $title,
     'start_command'      => $start_command,
     'stop_command'       => $stop_command,
     'sequence'           => $sequence,

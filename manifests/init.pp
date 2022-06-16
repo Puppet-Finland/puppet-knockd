@@ -49,6 +49,13 @@ class knockd (
     ensure => $package_ensure,
   }
 
+  $config_params = {
+    'interface' => $interface,
+    'logfile'   => $logfile,
+    'pidfile'   => $pidfile,
+    'usesyslog' => $usesyslog,
+  }
+
   concat { $knockd::params::config_file:
     owner => $knockd::params::default_owner,
     group => $knockd::params::default_group,
@@ -56,7 +63,7 @@ class knockd (
   }
   concat::fragment { 'knockd_config_header':
     target  => $knockd::params::config_file,
-    content => template('knockd/knockd.conf.erb'),
+    content => epp('knockd/knockd.conf.epp', $config_params),
     order   => '00',
   }
   concat::fragment { 'knockd_config_footer':
