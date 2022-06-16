@@ -65,52 +65,52 @@
 # Copyright 2015 Alessio Cassibba (X-Drum), unless otherwise noted.
 #
 define knockd::sequence (
-	$sequence = $knockd::params::sequence,
-	$open_sequence = $knockd::params::open_sequence,
-	$close_sequence = $knockd::params::close_sequence,
-	$one_time_sequences = $knockd::params::one_time_sequences,
-	$seq_timeout = $knockd::params::seq_timeout,
-	$tcpflags = $knockd::params::tcpflags,
-	$start_command = $knockd::params::start_command,
-	$stop_command = $knockd::params::stop_command,
-	$cmd_timeout = $knockd::params::cmd_timeout,
+  $sequence = $knockd::params::sequence,
+  $open_sequence = $knockd::params::open_sequence,
+  $close_sequence = $knockd::params::close_sequence,
+  $one_time_sequences = $knockd::params::one_time_sequences,
+  $seq_timeout = $knockd::params::seq_timeout,
+  $tcpflags = $knockd::params::tcpflags,
+  $start_command = $knockd::params::start_command,
+  $stop_command = $knockd::params::stop_command,
+  $cmd_timeout = $knockd::params::cmd_timeout,
 ) {
-	include knockd::params
+  include knockd::params
 
-	if $sequence == undef {
-		err("Please specify a valid value for sequence.")
-	}
-	if $seq_timeout == undef {
-		err("Please specify a valid value for timeout")
-	}
-	if $tcpflags == undef {
-		err("Please specify a valid value for tcpflags.")
-	}
+  if $sequence == undef {
+    err('Please specify a valid value for sequence.')
+  }
+  if $seq_timeout == undef {
+    err('Please specify a valid value for timeout')
+  }
+  if $tcpflags == undef {
+    err('Please specify a valid value for tcpflags.')
+  }
 
-	if $sequence {
-		if ($start_command == undef) or ($stop_command == undef) {
-			err("Please specify a valid value for both start_command and stop_command.")
-		}
-		if $cmd_timeout == undef {
-			err("Please specify a valid value for sequence.")
-		}
-	}
-	else {
-		err("Please specify a valid value for sequence.")
-	}
+  if $sequence {
+    if ($start_command == undef) or ($stop_command == undef) {
+      err('Please specify a valid value for both start_command and stop_command.')
+    }
+    if $cmd_timeout == undef {
+      err('Please specify a valid value for sequence.')
+    }
+  }
+  else {
+    err('Please specify a valid value for sequence.')
+  }
 
-	if ($open_sequence) and ($close_sequence) {
-		if ($start_command == undef) or ($stop_command == undef) {
-			err("Please specify a valid value for command.")
-		}
-	}
-	else {
-		err("Please specify a valid value for both open_sequence and close_sequence.")
-	}
+  if ($open_sequence) and ($close_sequence) {
+    if ($start_command == undef) or ($stop_command == undef) {
+      err('Please specify a valid value for command.')
+    }
+  }
+  else {
+    err('Please specify a valid value for both open_sequence and close_sequence.')
+  }
 
-	concat::fragment { "knockd_conf_snippet_${title}":
-		target  => $knockd::params::config_file,
-		content => template("knockd/knockd.conf-snippet.erb"),
-		order   => 10,
-	}
+  concat::fragment { "knockd_conf_snippet_${title}":
+    target  => $knockd::params::config_file,
+    content => template('knockd/knockd.conf-snippet.erb'),
+    order   => 10,
+  }
 }
